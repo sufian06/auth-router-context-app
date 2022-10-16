@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../contexts/UserContext";
+import { Navigate, Link } from "react-router-dom";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,6 +18,7 @@ const Login = () => {
         const user = result.user;
         console.log("signIn", user);
         form.reset();
+        <Navigate to="/home" replace={true} />
       })
       .catch((error) => {
         console.error(error);
@@ -54,9 +57,9 @@ const Login = () => {
                   required
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <Link to="#" className="label-text-alt link link-hover">
                     Forgot password?
-                  </a>
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">
